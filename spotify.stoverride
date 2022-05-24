@@ -1,0 +1,10 @@
+[
+  {
+    "name": "spotify-proto",
+    "type": "http",
+    "server": "pattern=^https:\\/\\/spclient\\.wg\\.spotify\\.com\\/(bootstrap\\/v1\\/bootstrap|user-customization-service\\/v1\\/customize)$",
+    "port": "requires-body=1",
+    "tls": false,
+    "tfo": false
+  }
+]
