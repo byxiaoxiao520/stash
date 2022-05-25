@@ -1,10 +1,17 @@
-[
-  {
-    "name": "spotify-proto",
-    "type": "http",
-    "server": "pattern=^https:\\/\\/spclient\\.wg\\.spotify\\.com\\/(bootstrap\\/v1\\/bootstrap|user-customization-service\\/v1\\/customize)$",
-    "port": "requires-body=1",
-    "tls": false,
-    "tfo": false
-  }
-]
+name: spotify
+desc: 部分解锁premium 需iOS15 ,建议重新登录,音质不能设置为超高
+
+http:
+  mitm:
+    - "spclient.wg..com"
+  script:
+    - match: ^https:\/\/spclient\.wg\.spotify\.com\/(bootstrap\/v1\/bootstrap|user-customization-service\/v1\/customize)$
+      name: spotify
+      type: response
+      require-body: true
+      timeout: 10
+      
+script-providers:
+  wps:
+    url: https://raw.githubusercontent.com/app2smile/rules/master/js/spotify-proto.js
+    interval: 86400
